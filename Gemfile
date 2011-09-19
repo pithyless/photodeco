@@ -14,3 +14,18 @@ gem 'jquery-rails'
 # gem 'unicorn'
 # gem 'capistrano'
 
+group :development, :test do
+  gem "rspec-rails", ">= 2.6.1"
+  gem "capybara"
+  gem 'shoulda-matchers'
+  gem 'fabrication'
+  gem 'launchy'
+
+  # Guard specific
+  gem 'rb-fsevent'
+  gem 'libnotify'
+  gem 'growl'
+  gem 'guard'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+end
