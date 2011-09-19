@@ -11,6 +11,15 @@ end
 
 gem 'jquery-rails'
 
+gem 'schema_plus'
+gem 'schema_associations'
+gem 'schema_validations'
+
+gem "devise", ">= 1.4.4"
+gem 'cancan'
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+
 # gem 'unicorn'
 # gem 'capistrano'
 
