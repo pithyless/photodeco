@@ -1,5 +1,5 @@
 ActiveAdmin.setup do |config|
-  config.site_title = "Presimondo"
+  config.site_title = "Photodeco"
 
   config.default_namespace = :admin
 

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Cerberus::Application.load_tasks
+Photodeco::Application.load_tasks
