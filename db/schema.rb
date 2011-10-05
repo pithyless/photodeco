@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110919135837) do
+ActiveRecord::Schema.define(:version => 20110921103700) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -27,6 +27,59 @@ ActiveRecord::Schema.define(:version => 20110919135837) do
     t.index ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
   end
 
+  create_table "providers", :force => true do |t|
+    t.string   "name",       :limit => 120, :null => false
+    t.string   "slug",       :limit => 60,  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "provider_id",                                :null => false
+    t.string   "title",                       :limit => 120, :null => false
+    t.text     "description"
+    t.string   "author"
+    t.text     "credit"
+    t.text     "source"
+    t.text     "copyright"
+    t.text     "notes"
+    t.datetime "taken_at"
+    t.datetime "digitized_at"
+    t.string   "image",                                      :null => false
+    t.string   "image_secure_token",          :limit => 10,  :null => false
+    t.string   "image_original_secure_token", :limit => 10,  :null => false
+    t.string   "image_original_filename",     :limit => 120, :null => false
+    t.boolean  "moderated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["image_original_secure_token"], :name => "index_photos_on_image_original_secure_token", :unique => true
+    t.index ["image_secure_token"], :name => "index_photos_on_image_secure_token", :unique => true
+    t.index ["provider_id"], :name => "index_photos_on_provider_id", :unique => true
+    t.foreign_key ["provider_id"], "providers", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "photos_provider_id_fkey"
+  end
+
+  create_table "stores", :force => true do |t|
+    t.string   "name",       :limit => 120, :null => false
+    t.string   "slug",       :limit => 120, :null => false
+    t.string   "domain",     :limit => 120, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["domain"], :name => "index_stores_on_domain", :unique => true
+    t.index ["slug"], :name => "index_stores_on_slug", :unique => true
+  end
+
+  create_table "products", :force => true do |t|
+    t.integer  "photo_id",   :null => false
+    t.integer  "store_id",   :null => false
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["photo_id"], :name => "index_products_on_photo_id"
+    t.index ["store_id", "photo_id"], :name => "index_products_on_store_id_and_photo_id", :unique => true
+    t.foreign_key ["photo_id"], "photos", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "products_photo_id_fkey"
+    t.foreign_key ["store_id"], "stores", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "products_store_id_fkey"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -40,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20110919135837) do
     t.string   "last_sign_in_ip"
     t.string   "first_name",                                            :null => false
     t.string   "last_name",                                             :null => false
+    t.string   "role",                                                  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["email"], :name => "index_users_on_email", :unique => true
