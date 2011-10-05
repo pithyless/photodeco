@@ -27,7 +27,7 @@ class AddCoreDomainModels < ActiveRecord::Migration
       t.string   :image_original_secure_token, :null => false, :limit => 10, :index => :unique
       t.string   :image_original_filename,     :null => false, :limit => 120
 
-      t.boolean  :moderated
+      t.boolean  :moderated,                   :null => false, :default => false
 
       t.timestamps
     end
@@ -44,7 +44,7 @@ class AddCoreDomainModels < ActiveRecord::Migration
       t.integer :photo_id,      :null => false
       t.integer :store_id,      :null => false, :index => { :with => :photo_id, :unique => true }
 
-      t.boolean :published
+      t.boolean :published,     :null => false, :default => false
 
       t.timestamps
     end

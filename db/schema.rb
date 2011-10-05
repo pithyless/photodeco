@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20110921103700) do
   end
 
   create_table "photos", :force => true do |t|
-    t.integer  "provider_id",                                :null => false
-    t.string   "title",                       :limit => 120, :null => false
+    t.integer  "provider_id",                                                   :null => false
+    t.string   "title",                       :limit => 120,                    :null => false
     t.text     "description"
     t.string   "author"
     t.text     "credit"
@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(:version => 20110921103700) do
     t.text     "notes"
     t.datetime "taken_at"
     t.datetime "digitized_at"
-    t.string   "image",                                      :null => false
-    t.string   "image_secure_token",          :limit => 10,  :null => false
-    t.string   "image_original_secure_token", :limit => 10,  :null => false
-    t.string   "image_original_filename",     :limit => 120, :null => false
-    t.boolean  "moderated"
+    t.string   "image",                                                         :null => false
+    t.string   "image_secure_token",          :limit => 10,                     :null => false
+    t.string   "image_original_secure_token", :limit => 10,                     :null => false
+    t.string   "image_original_filename",     :limit => 120,                    :null => false
+    t.boolean  "moderated",                                  :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["image_original_secure_token"], :name => "index_photos_on_image_original_secure_token", :unique => true
@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(:version => 20110921103700) do
   end
 
   create_table "products", :force => true do |t|
-    t.integer  "photo_id",   :null => false
-    t.integer  "store_id",   :null => false
-    t.boolean  "published"
+    t.integer  "photo_id",                      :null => false
+    t.integer  "store_id",                      :null => false
+    t.boolean  "published",  :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["photo_id"], :name => "index_products_on_photo_id"
