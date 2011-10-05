@@ -1,0 +1,2 @@
+Fabricator(:provider) do
+end
