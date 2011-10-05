@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
 
   check_authorization :unless => :devise_controller?
 
+  # Override build_footer method in ActiveAdmin::Views::Pages
+  require 'active_admin_views_pages_base.rb'
+
   def raise_forbidden
     fail 'Forbidden'
   end
