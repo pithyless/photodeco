@@ -1,4 +1,4 @@
-ActiveAdmin.register Photos do
+ActiveAdmin.register Photo do
   # controller.authorize_resource
 
   # index do
