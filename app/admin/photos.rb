@@ -1,5 +1,5 @@
 ActiveAdmin.register Photo do
-  # controller.authorize_resource
+  controller.authorize_resource
 
   # index do
   #   column :first_name
@@ -8,6 +8,8 @@ ActiveAdmin.register Photo do
   #   column :last_sign_in_at
   #   default_actions
   # end
+
+  form :partial => "form"
 
   # form do |f|
   #   f.inputs "User details" do

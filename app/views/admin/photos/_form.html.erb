@@ -1,0 +1,11 @@
+<%= semantic_form_for [:admin, @photo] do |f| %>
+
+  <%= @photo.errors.messages %>
+
+  <%= f.inputs "New Photo" do %>
+    <%= f.input :provider %>
+    <%= f.input :title %>
+    <%= f.file_field :image %>
+  <% end %>
+  <%= f.buttons :commit %>
+<% end %>

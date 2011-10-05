@@ -6,7 +6,7 @@ class OriginalPhotoUploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
-    "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "#{Rails.root}/uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def cache_dir
@@ -42,12 +42,12 @@ class OriginalPhotoUploader < CarrierWave::Uploader::Base
 
   version :medium do
     # TODO: watermark
-    process :resize_to_fill => [500, 500]
+    process :resize_to_fit => [500, 500]
   end
 
   version :large do
     # TODO: watermark
-    process :scale => [1024, 1024]
+    process :resize_to_fit => [1024, 1024]
   end
 
   def extension_white_list
