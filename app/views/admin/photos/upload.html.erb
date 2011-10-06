@@ -1,0 +1,69 @@
+<%= content_for :head_js do %>
+  <link rel="stylesheet" href="/javascripts/plupload/jquery.ui.plupload/css/jquery.ui.plupload.css" type="text/css" />
+  <link rel="stylesheet" href="/javascripts/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" />
+
+  <script type="text/javascript" src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
+
+  <script type="text/javascript" src="/javascripts/plupload/plupload.js"></script>
+  <script type="text/javascript" src="/javascripts/plupload/plupload.gears.js"></script>
+  <script type="text/javascript" src="/javascripts/plupload/plupload.silverlight.js"></script>
+  <script type="text/javascript" src="/javascripts/plupload/plupload.flash.js"></script>
+  <script type="text/javascript" src="/javascripts/plupload/plupload.browserplus.js"></script>
+  <script type="text/javascript" src="/javascripts/plupload/plupload.html4.js"></script>
+  <script type="text/javascript" src="/javascripts/plupload/plupload.html5.js"></script>
+  <script type="text/javascript" src="/javascripts/plupload/jquery.ui.plupload/jquery.ui.plupload.js"></script>
+  <script type="text/javascript" src="/javascripts/plupload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+
+  <script type="text/javascript">
+  $(function(){
+   var uploader = new plupload.Uploader({
+    runtimes : "flash,html5,browserplus,silverlight,gears,html4",
+    url : "/admin/photos/upload_photo",
+    max_file_size : '100mb',
+    max_file_count : '20',
+    chunk_size : '1mb',
+    unique_names : true,
+    multiple_queues : true,
+    filters : [
+                {title : "Image files", extensions : "jpg,jpeg"}
+              ],
+
+    flash_swf_url: "/javascripts/plupload/plupload.flash.swf",
+    silverlight_xap_url: "/javascripts/plupload/plupload.silverlight.xap",
+    multipart: true,
+    multipart_params: {
+     "authenticity_token" : '<%= form_authenticity_token %>'
+    }
+   });
+   
+   uploader.bind('Init', function(up, params) {
+        $('#filelist').html("<div>Current runtime: " + params.runtime + "</div>");
+   });
+   
+   uploader.bind('FilesAdded', function(up, files) {
+     $.each(files, function(i, file) {
+            $('#filelist').append(
+                '<div id="' + file.id + '">' +
+                'File: ' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+                '</div>'
+            );
+        });
+    });
+   
+    uploader.bind('UploadProgress', function(up, file) {
+        $('#' + file.id + " b").html(file.percent + "%");
+    });
+   
+    $('#uploadfiles').click(function(e) {
+        uploader.start();
+        e.preventDefault();
+    });
+   
+    uploader.init();
+  });
+  </script>
+ <% end %>               
+
+<div id="uploader">
+  <p>You browser doesn't have HTML5, Flash or Silverlight support.</p>
+</div>
