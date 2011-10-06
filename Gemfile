@@ -22,6 +22,8 @@ gem "meta_search",    '>= 1.1.0.pre'
 
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'chronic'
+gem 'exiv2', :git => 'https://github.com/envato/exiv2'
 
 # gem 'unicorn'
 # gem 'capistrano'

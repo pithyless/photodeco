@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/envato/exiv2
+  revision: cf781a90ef7220a4eaf8d7bfe9ccee8f15e57201
+  specs:
+    exiv2 (0.0.5)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -54,6 +60,7 @@ GEM
       activesupport (~> 3.0)
     childprocess (0.2.2)
       ffi (~> 1.0.6)
+    chronic (0.6.4)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -207,8 +214,10 @@ DEPENDENCIES
   cancan
   capybara
   carrierwave
+  chronic
   coffee-rails (~> 3.1.0)
   devise (>= 1.4.4)
+  exiv2!
   fabrication
   growl
   guard
