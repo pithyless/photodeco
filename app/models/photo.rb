@@ -18,7 +18,7 @@ class Photo < ActiveRecord::Base
   end
 
   attr_accessible :title, :description, :author, :credit, :source,
-                  :copyright, :notes, :taken_at, :digitized_at,
+                  :copyright, :notes, :taken_at, :digitized_at, :moderated,
                   :image, :provider_id
 
   before_validation :hardcode_provider
@@ -121,7 +121,7 @@ class Photo < ActiveRecord::Base
     notes = []
     notes << "Keywords: #{meta.keywords} ||"
     meta.each { |k,v| notes << "#{k} => #{v}" }
-    self[:notes] = notes.join('\n')
+    self[:notes] = notes.join("\n")
 
     # TODO
     self[:image_original_filename] = self.image.file.original_filename

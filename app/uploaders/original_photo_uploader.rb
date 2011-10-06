@@ -6,18 +6,16 @@ class OriginalPhotoUploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
-    "#{Rails.root}/uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def cache_dir
     "#{Rails.root}/tmp/uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}"
   end
 
-  # TODO:
   # def store_path(for_file = filename)
-  #   filename = 
-  #   File.join([store_dir, full_filename(for_file)].compact)
-  #   self.model.class.name.underscore.pluralize + "/" + self.model.slug + "/" + (version_name || :original).to_s + ".jpg"
+  #   File.join([Rails.root, store_dir, full_filename(for_file)].compact)
+  #   # TODO:  self.model.class.name.underscore.pluralize + "/" + self.model.slug + "/" + (version_name || :original).to_s + ".jpg"
   # end
 
 

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  ROLES = ['guest', 'user', 'staff', 'manager', 'admin']
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

@@ -7,7 +7,7 @@ ActiveAdmin.setup do |config|
   config.current_user_method = :current_admin_user
 
   config.logout_link_path = :destroy_user_session_path
-  config.logout_link_method = :get
+  config.logout_link_method = :delete
 
   # Admin comments allow you to add comments to any model for admin use
   config.allow_comments_in = [:admin]
@@ -22,9 +22,12 @@ ActiveAdmin.setup do |config|
   # up your own stylesheets / javascripts to customize the look
   # and feel.
   #
-  # To load a stylesheet:
-  #   config.register_stylesheet 'my_stylesheet.css'
-  #
-  # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
+
+  # TODO:
+  # config.register_stylesheet '/javascripts/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css'
+  # config.register_stylesheet '/javascripts/plupload/jquery.ui.plupload/css/jquery.ui.plupload.css'
+
+  # config.register_javascript '/javascripts/plupload/plupload.js'
+  # config.register_javascript '/javascripts/plupload/plupload.html5.js'
+  # config.register_javascript '/javascripts/plupload_loader.js'
 end

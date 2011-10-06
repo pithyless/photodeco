@@ -6,4 +6,24 @@
     <% end %>
     <%= f.buttons :commit %>
   <% end %>
+<% else %>
+  <%= semantic_form_for [:admin, @photo] do |f| %>
+    <%= f.inputs "Photo Details" do %>
+      <%= image_tag(photo.image.large) %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+    <% end %>
+    <%= f.inputs "Photo Metadata" do %>
+      <%= f.input :author %>
+      <%= f.input :credit %>
+      <%= f.input :copyright %>
+      <%= f.input :source %>
+      <%= f.input :taken_at %>
+      <%= f.input :digitized_at %>
+    <% end %>
+    <%= f.inputs "Status" do %>
+      <%= f.input :moderated, :as => :radio %>
+    <% end %>
+    <%= f.buttons :commit %>
+  <% end %>
 <% end %>

@@ -1,10 +1,16 @@
 ActiveAdmin.register User do
   controller.authorize_resource
 
+  filter :email
+  filter :first_name
+  filter :last_name
+  filter :role, :as => :check_boxes, :collection => proc {User::ROLES.reverse}
+
   index do
     column :first_name
     column :last_name
     column :email
+    column :role
     column :last_sign_in_at
     default_actions
   end
