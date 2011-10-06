@@ -16,7 +16,7 @@ gem 'schema_associations'
 gem 'schema_validations'
 
 gem "devise", ">= 1.4.4"
-gem 'cancan'
+gem 'cancan', ">= 1.6.7"
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 
