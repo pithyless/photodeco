@@ -26,7 +26,8 @@ gem 'chronic'
 gem 'exiv2', :git => 'https://github.com/envato/exiv2'
 
 # gem 'unicorn'
-# gem 'capistrano'
+# TODO: gem 'therubyracer'
+gem 'capistrano'
 
 group :development, :test do
   gem "rspec-rails", ">= 2.6.1"
