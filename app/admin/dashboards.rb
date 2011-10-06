@@ -12,6 +12,13 @@ ActiveAdmin::Dashboards.build do
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
 
+  section "Photos" do
+    attributes_table_for Photo.first do
+      row("Photos Not Moderated") { Photo.not_moderated.count }
+      row("Photos Total") { Photo.count }
+    end
+  end
+  
   # == Simple Dashboard Section
   # Here is an example of a simple dashboard section
   #

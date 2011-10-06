@@ -128,4 +128,11 @@ class Photo < ActiveRecord::Base
     self[:image_original_secure_token] = 'secretOne'
     self[:image_secure_token] = 'secretTwo'
   end
+
+  def self.not_moderated
+    find(:all, :conditions => {:moderated => false})
+  end
+  def self.recent(count)
+    Photo.order('created_at desc').limit(count)
+  end
 end
