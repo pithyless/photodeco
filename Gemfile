@@ -26,7 +26,9 @@ gem 'chronic'
 gem 'exiv2', :git => 'https://github.com/envato/exiv2'
 
 # gem 'unicorn'
-# TODO: gem 'therubyracer'
+group :production do
+  gem 'therubyracer'
+end
 gem 'capistrano'
 
 group :development, :test do
