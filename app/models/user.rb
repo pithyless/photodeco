@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ROLES = [:guest, :user, :staff, :manager, :admin]
+  ROLES = ['guest', 'user', 'staff', 'manager', 'admin']
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   before_validation :set_role
 
   def set_role
-    self[:role] = :user
+    self[:role] = 'user'
   end
 
   def admin?
