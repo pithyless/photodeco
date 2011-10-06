@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   before_validation :set_role
 
   def set_role
-    self[:role] = 'user'
+    self[:role] = 'user' if self[:role].blank?
   end
 
   def admin?
