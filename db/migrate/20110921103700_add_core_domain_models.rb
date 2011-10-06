@@ -9,7 +9,7 @@ class AddCoreDomainModels < ActiveRecord::Migration
     end
 
     create_table :photos do |t|
-      t.integer  :provider_id,     :null => false, :index => :unique
+      t.integer  :provider_id,     :null => false
 
       t.string   :title,           :null => false, :limit => 120
       t.text     :description
@@ -23,8 +23,8 @@ class AddCoreDomainModels < ActiveRecord::Migration
       t.datetime :digitized_at
 
       t.string   :image,                       :null => false
-      t.string   :image_secure_token,          :null => false, :limit => 10, :index => :unique
-      t.string   :image_original_secure_token, :null => false, :limit => 10, :index => :unique
+      t.string   :image_secure_token,          :null => false, :limit => 10
+      t.string   :image_original_secure_token, :null => false, :limit => 10
       t.string   :image_original_filename,     :null => false, :limit => 120
 
       t.boolean  :moderated,                   :null => false, :default => false

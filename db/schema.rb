@@ -52,9 +52,7 @@ ActiveRecord::Schema.define(:version => 20110921103700) do
     t.boolean  "moderated",                                  :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["image_original_secure_token"], :name => "index_photos_on_image_original_secure_token", :unique => true
-    t.index ["image_secure_token"], :name => "index_photos_on_image_secure_token", :unique => true
-    t.index ["provider_id"], :name => "index_photos_on_provider_id", :unique => true
+    t.index ["provider_id"], :name => "index_photos_on_provider_id"
     t.foreign_key ["provider_id"], "providers", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "photos_provider_id_fkey"
   end
 
