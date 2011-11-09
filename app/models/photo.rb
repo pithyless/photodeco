@@ -25,7 +25,7 @@ class Photo < ActiveRecord::Base
   before_validation :parse_image_metadata
 
   def hardcode_provider
-    # Temporary - always set to Forum
+    # TODO: Temporary - always set to Forum
     self[:provider_id] = Provider.find_by_slug!('agencja-forum')
   end
 
@@ -95,6 +95,7 @@ class Photo < ActiveRecord::Base
   end
 
   def parse_image_metadata
+    return unless new_record?
     image = Exiv2::ImageFactory.open(self.image.file.path)
     image.read_metadata
 
