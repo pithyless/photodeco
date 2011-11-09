@@ -8,8 +8,13 @@
   <% end %>
 <% else %>
   <%= semantic_form_for [:admin, @photo] do |f| %>
-    <%= f.inputs "Photo Details" do %>
+    <%= f.inputs "Photo" do %>
       <%= image_tag(photo.image.large) %>
+      <%= f.input :image, :as => :file,
+        :label => 'Upload New Photo',
+        :required => false %>
+    <% end %>
+    <%= f.inputs "Photo Details" do %>
       <%= f.input :title %>
       <%= f.input :description %>
     <% end %>
