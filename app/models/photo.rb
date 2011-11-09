@@ -108,7 +108,7 @@ class Photo < ActiveRecord::Base
       meta[key] = value
     end
 
-    self[:title] = meta.iptc('Headline')
+    self[:title] = meta.iptc('Headline') || self.image.file.original_filename
     self[:description] = [meta.iptc('Headline'), meta.iptc('Byline'),
                           meta.iptc('Caption')].compact.join("\n\n")
     self[:author] = meta.iptc('Writer')
