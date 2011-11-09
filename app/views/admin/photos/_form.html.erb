@@ -1,8 +1,10 @@
 <% if @photo.new_record? %>
   <%= semantic_form_for [:admin, @photo] do |f| %>
+    <%= @photo.errors.messages unless @photo.errors.empty? %>
     <%= f.inputs "Upload Photo" do %>
-      <%= f.label 'Choose Photo:' %>
-      <%= f.file_field :image %>
+      <%= f.input :image, :as => :file,
+        :label => 'Choose Photo (JPEG Only):',
+        :required => false %>
     <% end %>
     <%= f.buttons :commit %>
   <% end %>
